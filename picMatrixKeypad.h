@@ -4,7 +4,7 @@
  *  Created on: Feb 28, 2016
  *      Author: John Convertino
  *		email: electrobs@gmail.com
- *		
+ *
     Copyright (C) 2016 John Convertino
 
     This program is free software; you can redistribute it and/or modify
@@ -35,7 +35,7 @@
 #define NO_NEW_VALUE	0xFF
 
 //pass port to be used, irq pin and ack pin to be used on that port.
-void initializePICkeypad(volatile uint8_t *port, uint8_t irqPin, uint8_t ackPin);
+void initPICkeypad(volatile uint8_t *port, uint8_t irqPin, uint8_t ackPin);
 
 //check if we have a value, and get it if we do.
 uint8_t getPICkeyValue(void);

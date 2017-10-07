@@ -4,7 +4,7 @@
  *  Created on: Feb 28, 2016
  *      Author: John Convertino
  *		email: electrobs@gmail.com
- *		
+ *
     Copyright (C) 2016 John Convertino
 
     This program is free software; you can redistribute it and/or modify
@@ -36,8 +36,11 @@
 
 struct s_keypad e_keypad;
 
-void initializePICkeypad(volatile uint8_t *port, uint8_t irqPin, uint8_t ackPin)
+void initPICkeypad(volatile uint8_t *port, uint8_t irqPin, uint8_t ackPin)
 {
+	uint8_t tmpSREG = SREG;
+	cli();
+
 	e_keypad.value = 0;
 	e_keypad.irqPin = irqPin;
 	e_keypad.ackPin = ackPin;
@@ -63,8 +66,9 @@ void initializePICkeypad(volatile uint8_t *port, uint8_t irqPin, uint8_t ackPin)
 		PCMSK2 |= 1 << e_keypad.irqPin;
 	}
 
-	sei();
+	SREG = tmpSREG();
 
+	sei();
 }
 
 uint8_t getPICkeyValue(void)
@@ -85,4 +89,3 @@ uint8_t getPICkeyValue(void)
 
 	return NO_NEW_VALUE;
 }
-
