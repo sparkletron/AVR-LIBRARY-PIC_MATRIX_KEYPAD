@@ -38,7 +38,9 @@ struct s_keypad e_keypad;
 
 void initPICkeypad(volatile uint8_t *port, uint8_t irqPin, uint8_t ackPin)
 {
-	uint8_t tmpSREG = SREG;
+	uint8_t tmpSREG = 0;
+	
+	tmpSREG = SREG;
 	cli();
 
 	e_keypad.value = 0;
@@ -66,7 +68,7 @@ void initPICkeypad(volatile uint8_t *port, uint8_t irqPin, uint8_t ackPin)
 		PCMSK2 |= 1 << e_keypad.irqPin;
 	}
 
-	SREG = tmpSREG();
+	SREG = tmpSREG;
 
 	sei();
 }
