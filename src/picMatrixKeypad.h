@@ -38,6 +38,6 @@
 void initPICkeypad(volatile uint8_t *port, uint8_t irqPin, uint8_t ackPin);
 
 //check if we have a value, and get it if we do.
-uint8_t getPICkeyValue(void);
+uint8_t getPICkeyValue();
 
 #endif /* PICMATRIXKEYPAD_H_ */
